@@ -13,6 +13,7 @@ void setup() {
 
     // setup wifi first
 
+    ota.setStatusCallback(handleOTAStatus);
     /**
      * Checks the last reboot reason.
      * On an error the setup functions waits n seconds to run a OTA Update
@@ -20,6 +21,17 @@ void setup() {
     ota.setup(); 
 
     // other setup stuff
+}
+
+void handleOTAStatus(String ip, boolean error, String reason) {
+    //e.g. send message via pushover
+    if(error) {
+        //Pushover po = Pushover("XXX", "XXX");
+        //po.setTitle("OTA Update");
+        //po.setMessage("OTA Update failed: " + ip + ", reason: " + reason);
+        //po.setSound(F("none"));
+        //po.send();
+    }
 }
 
 void loop() {
